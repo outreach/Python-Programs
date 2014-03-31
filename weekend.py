@@ -1,42 +1,30 @@
 import datetime
 
-#now = datetime.datetime.now()
-#
-#date = now.date()
-#time = now.time()
-#today = datetime.datetime.today()
-#
-#print now
-#print date, time, today
-#print datetime.datetime.combine(date, time)
+# now = datetime.datetime.now()
+now = datetime.datetime.now() + datetime.timedelta(days=7)
+two_days_from_now = now + datetime.timedelta(days=2)
+day_of_the_week = now.strftime("%A")
 
-now = datetime.datetime.now()
-#date = datetime.date(now)
-#day = datetime.day(now)
-print now
-#print day
-#print date
-
-day_difference = datetime.timedelta(days=2)
-two_days_from_now = now + day_difference
-day_of_the_week = datetime.date.today().strftime("%A")
-
-day_of_the_week = "Friday"
+# Calculate business days
+if day_of_the_week == "Monday" or day_of_the_week == "Tuesday" or day_of_the_week == "Wednesday":
+    two_business_day_from_now = now + datetime.timedelta(days=2)
 
 if day_of_the_week == "Thursday":
     two_business_day_from_now = now + datetime.timedelta(days=4)
-    print two_business_day_from_now
 
 if day_of_the_week == "Friday":
     two_business_day_from_now = now + datetime.timedelta(days=5)
-    print two_business_day_from_now
+
+if day_of_the_week == "Saturday":
+    two_business_day_from_now = now + datetime.timedelta(days=4)
+
+if day_of_the_week == "Sunday":
+    two_business_day_from_now = now + datetime.timedelta(days=3)
 
 
-print "Today: " + str(now)
-print "Two days from now: " + str(two_days_from_now)
-print "Two business days from now: " + str(two_business_day_from_now)
-
-
-today = datetime.datetime.weekday(now)
-print "Day code: ", today
-print "Day of week: ", day_of_the_week
+#print "Today: " + str(now)
+print "Today: " + now.strftime("%A, %B %e, %Y %r")
+#print "Two days from now: " + str(two_days_from_now)
+print "Two days from now: " + two_days_from_now.strftime("%A, %B %e, %Y %r")
+print "Two business days from now: " + two_business_day_from_now.strftime("%A, %B %e, %Y %r")
+print "Day code: " + now.strftime("%w")
